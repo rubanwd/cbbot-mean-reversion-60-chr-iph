@@ -43,7 +43,7 @@ class TradingBot:
         print("--------------------")
 
         is_open_positions = self.data_fetcher.get_open_positions(self.symbol)
-        
+
         if is_open_positions:
             print("There is already an open position. A new order will not be placed.")
             return
@@ -105,7 +105,7 @@ class TradingBot:
 
     def run(self):
         self.job()
-        schedule.every(2).seconds.do(self.job)
+        schedule.every(10).seconds.do(self.job)
         while True:
             schedule.run_pending()
             time.sleep(1)
